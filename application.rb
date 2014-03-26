@@ -37,35 +37,25 @@ class Application < Sinatra::Base
   post '/orders.json' do
 
     message = "#{params[:order][:username]}. #{params[:order][:phone]}"
+    message += "\n"
+    message += params[:order][:square]
 
 
-    #HTTParty.post(
-    #  'http://crm.abardacha.ru/api/clients',
-    #  query: {
-    #    client: {
-    #      name: params[:order][:username],
-    #      phone: params[:order][:phone],
-    #      email: params[:order][:email],
-    #      first_comment: params[:order][:message]
-    #    }
-    #  }
-    #)
 
-
-    #Pony.mail ({
-    #  to: 'v.kozlofff@gmail.com',
-    #  subject: I18n.t('email.title', locale: 'ru'),
-    #  body: message,
-    #  via: :smtp,
-    #  via_options: {
-    #    address: 'smtp.gmail.com',
-    #    port: 587,
-    #    enable_starttls_auto: true,
-    #    user_name: 'mimicase.notify',
-    #    password: 'mimicase',
-    #    authentication: :plain
-    #  }
-    #})
+    Pony.mail ({
+      to: 'abardacha@gmail.com',
+      subject: I18n.t('email.title', locale: 'ru'),
+      body: message,
+      via: :smtp,
+      via_options: {
+        address: 'smtp.gmail.com',
+        port: 587,
+        enable_starttls_auto: true,
+        user_name: 'agatovs@gmail.com',
+        password: 'f1i4o9l2e4n9t',
+        authentication: :plain
+      }
+    })
 
     content_type :json
     {status: :success}.to_json

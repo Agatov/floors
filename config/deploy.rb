@@ -1,8 +1,8 @@
 # Bundler tasks
 require 'bundler/capistrano'
 
-set :application, "rzkm"
-set :repository,  "git@github.com:Agatov/rzkm"
+set :application, "floors"
+set :repository,  "git@github.com:Agatov/floors"
 
 set :scm, :git
 
